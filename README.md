@@ -67,9 +67,7 @@ d) 常用的 hexo 命令：
 
 #### 3. 更新操作步骤
 
-a) 从 github 下载【最新的】网页源码，到 [sues-vision.github.io] 文件夹：
-	https://github.com/sues-vision/team_page_hexo
-	文件可分为两类：1. 生成网页源码的 hexo 工程代码（newest）；2. 仓库代码（readme.md and readme_imgs）；3. 网页源码（除了上述 1、2 之外的所有文件）
+a) 从 github 下载【最新的】网页源码，到 [sues-vision.github.io] 文件夹。文件可分为 3 类：1. 生成网页源码的 hexo 工程代码（newest）；2. 仓库代码（readme.md and readme_imgs）；3. 网页源码（除了上述 1、2 之外的所有文件）
 ![image](readme_imgs/5-folder.png)
 
 b) 进入 newest 目录，在终端输入 hero s，即可在本地启动网站
