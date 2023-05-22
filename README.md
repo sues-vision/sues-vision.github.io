@@ -1,4 +1,4 @@
-## 团队网站更新 - 操作手册
+# 团队网站更新 - 操作手册
 
 - 团队github：https://github.com/sues-vision
 - 主页：https://sues-vision.github.io/
@@ -8,7 +8,7 @@
 - 说明如何更新网站内容；
 - 仓库说明。
 
-### 一、网站概况
+## 一、网站概况
 团队网站的内容由静态博客框架 Hexo[1] 生成，后端基于 Github Pages[2] 托管服务。网站基于 Icarus[3] 主题，进行了适当修改。
 ![image](readme_imgs/1-icarus.png)
 
@@ -28,10 +28,10 @@
 - 如何配置自己的 Icarus 主题：https://blog.csdn.net/Marvine/article/details/89816846 
 - GitHub文件上传指南：https://mp.weixin.qq.com/s/X2BUGMS6KQLcKeRqWP7a8g 
 
-### 二、网站更新操作步骤
+## 二、网站更新操作步骤
 本章节将会首先介绍初次使用要下载的依赖工具，然后是步骤概述，最后是具体更新步骤。
 
-#### 1. 初次使用
+### 1. 初次使用
 
 a) 确保在电脑上已安装以下工具：
 1. nodejs: v12.12.0【重要】
@@ -40,17 +40,19 @@ a) 确保在电脑上已安装以下工具：
 	
 b) 安装注意事项：
 1. 版本兼容问题（nodejs 与 hexo）：
-    https://blog.csdn.net/Feng_ye__/article/details/123024269 
+- https://blog.csdn.net/Feng_ye__/article/details/123024269 
 2. 安装指定版本的 nodejs，并使用 node -v 查看 nodejs 版本：
-    https://blog.csdn.net/weixin_38999134/article/details/105620177
+- https://blog.csdn.net/weixin_38999134/article/details/105620177
 		
 c) 安装 hexo 后先新建一个文件夹，检测是否安装成功：
-	安装：https://blog.csdn.net/qq_37908043/article/details/89066858
-	测试：	
-1. mkdir hexo_test
-2. cd hexo_test
-3. hexo init 创建工程
-4. hexo s 启动服务，可点击进入 http://localhost:4000/，显示下图，代表已正确安装
+安装：
+- https://blog.csdn.net/qq_37908043/article/details/89066858
+
+测试：	
+- mkdir hexo_test
+- cd hexo_test
+- hexo init 创建工程
+- hexo s 启动服务，可点击进入 http://localhost:4000/，显示下图，代表已正确安装
 
 ![image](readme_imgs/2-hexo-show.png)
 
@@ -59,14 +61,15 @@ c) 安装 hexo 后先新建一个文件夹，检测是否安装成功：
 d) 常用的 hexo 命令：
 ![image](readme_imgs/4-hexo-cmd.png)
 
-#### 2. 更新网站内容过程概述：
+### 2. 更新网站内容过程概述：
+
 1. 解压 newest.zip，更新网页源码，到 newest->public 中；
 2. 将 newest->public 目录下的文件，转移到 sues-vision.github.io 目录下，覆盖原始 2 文件；
 3. 将 newest->public 目录下的文件清空，然后压缩 newest，覆盖原始 1 文件；
 4. 将 sues-vision.github.io 目录下的所有内容，上传到 GitHub 仓库。
 
 
-#### 3. 更新操作步骤
+### 3. 更新操作步骤
 
 a) 从 github 下载【最新的】网页源码，到 [sues-vision.github.io] 文件夹。文件可分为 3 类：
 1. 生成网页源码的 hexo 工程代码（newest）；
@@ -85,6 +88,7 @@ c) 新建博文
 
 	
 d) 确认效果无误，开始上传到 github 仓库
+
 1. 终端运行 hexo g，将在 public 文件夹下生成网页源码；
 2. 将 public 下的所有内容转移到 [sues-vision.github.io] 文件夹；
 3. 将 newest 文件夹压缩，覆盖原始的 newest.zip；
@@ -92,7 +96,7 @@ d) 确认效果无误，开始上传到 github 仓库
 5. 等待两分钟，即可在 https://sues-vision.github.io 看到更新的网站。
 
 
-### 三、仓库说明
+## 三、仓库说明
 
 目前有 5 个仓库，其中 1 个为网站相关，2 个为共享资料，2 个为同学实验代码。同学们可根据自己需求新建仓库。
 
