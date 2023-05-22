@@ -8,8 +8,6 @@
 2. 说明如何更新网站内容；
 3. 仓库说明。
 
-This document is created by WangBH in May, 2023.
-
 ### 一、网站概况
 团队网站的内容由静态博客框架 Hexo[1] 生成，后端基于 Github Pages[2] 托管服务。网站基于 Icarus[3] 主题，进行了适当修改。
 ![image](readme_imgs/1-icarus.png)
@@ -80,11 +78,11 @@ c) 新建博文
 
 	
 d) 确认效果无误，开始上传到 github 仓库
-	终端运行 hexo g，将在 public 文件夹下生成网页源码
-	将 public 下的所有内容转移到 [sues-vision.github.io] 文件夹下
-	将 newest 文件夹压缩，覆盖原始的 newest.zip
-	将更新后的 [sues-vision.github.io] 文件夹上传到 GitHub
-	等待两分钟，即可在 https://sues-vision.github.io 看到更新的网站
+	1. 终端运行 hexo g，将在 public 文件夹下生成网页源码；
+	2. 将 public 下的所有内容转移到 [sues-vision.github.io] 文件夹；
+	3. 将 newest 文件夹压缩，覆盖原始的 newest.zip；
+	4. 将更新后的 [sues-vision.github.io] 文件夹上传到 GitHub；
+	5. 等待两分钟，即可在 https://sues-vision.github.io 看到更新的网站。
 
 
 ### 三、仓库说明
@@ -100,3 +98,5 @@ d) 确认效果无误，开始上传到 github 仓库
 [4] pre-print paper/预发布版本论文
 什么是preprint版论文？https://zhuanlan.zhihu.com/p/52779553 
 
+
+This document is created by atiuo in May, 2023.
