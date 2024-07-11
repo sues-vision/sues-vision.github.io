@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Lingyu Ji, Xiaoyan Jiang, Yongbin Gao, Zhijun Fang,“ADR‐Net:Context extraction network based on M‐Net for medical image segmentation” Medical Physics | Hexo</title>
+  <meta name="description" content="团队负责人姜晓燕老师的论文“ADR‐Net: Context extraction network based on M‐Net for medical image segmentation” 被SCI期刊 《Medical Physics》 接收，祝贺！ Abstract:PurposeMedical image segmentation is an essential component of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lingyu Ji, Xiaoyan Jiang, Yongbin Gao, Zhijun Fang,“ADR‐Net:Context extraction network based on M‐Net for medical image segmentation” Medical Physics">
+<meta property="og:url" content="http://sues-vision.github.io/2020/12/31/paper-2020-MP/index.html">
+<meta property="og:site_name" content="Multi-Dimensional Computer Vision Team">
+<meta property="og:description" content="团队负责人姜晓燕老师的论文“ADR‐Net: Context extraction network based on M‐Net for medical image segmentation” 被SCI期刊 《Medical Physics》 接收，祝贺！ Abstract:PurposeMedical image segmentation is an essential component of">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-31T07:45:40.000Z">
+<meta property="article:modified_time" content="2024-06-21T08:22:47.054Z">
+<meta property="article:author" content="Atiuo">
+<meta property="article:tag" content="论文 Article">
+<meta property="article:tag" content="医学图像 Medical Image">
+<meta property="article:tag" content="注意力机制 Attention">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://sues-vision.github.io/2020/12/31/paper-2020-MP/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Multi-Dimensional Computer Vision Team" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/1.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/sues-vision" target="_blank">
+          <img class="img-circle img-rotate" src="/img/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">多维度计算机视觉团队</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Multi-Dimensional Computer Vision Team</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-papers">
+          <a href="/2017/12/31/03-paperlist">
+            
+            <span class="menu-title">论文</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/2017/12/31/02-projects">
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-reward">
+          <a href="/reward">
+            
+            <span class="menu-title">获奖</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-patents">
+          <a href="/Patents">
+            
+            <span class="menu-title">专利</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-graduate">
+          <a href="/graduate">
+            
+            <span class="menu-title">毕业生去向</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E4%B8%89%E7%BB%B4-3D/" style="font-size: 13.75px;">三维 3D</a> <a href="/tags/%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB-Action-Recognition/" style="font-size: 13px;">动作识别 Action Recognition</a> <a href="/tags/%E5%8C%BB%E5%AD%A6%E5%9B%BE%E5%83%8F-Medical-Image/" style="font-size: 13.25px;">医学图像 Medical Image</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA-Single-object-Tracking/" style="font-size: 13px;">单目标跟踪 Single-object Tracking</a> <a href="/tags/%E5%90%8C%E6%AD%A5%E5%AE%9A%E4%BD%8D%E4%B8%8E%E5%9C%B0%E5%9B%BE%E7%BB%98%E5%88%B6-SLAM/" style="font-size: 13.25px;">同步定位与地图绘制 SLAM</a> <a href="/tags/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-GNN/" style="font-size: 13px;">图神经网络 GNN</a> <a href="/tags/%E5%A4%9A%E6%A8%A1%E6%80%81-CLIP/" style="font-size: 13px;">多模态 CLIP</a> <a href="/tags/%E5%A4%9A%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA-MOT/" style="font-size: 13.25px;">多目标跟踪 MOT</a> <a href="/tags/%E5%AD%A6%E6%9C%AF%E4%BA%A4%E6%B5%81-Academic-Activities/" style="font-size: 13px;">学术交流 Academic Activities</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88-Data-Fusion/" style="font-size: 13.25px;">数据融合 Data Fusion</a> <a href="/tags/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0-Unsupervised-Learning/" style="font-size: 13px;">无监督学习 Unsupervised Learning</a> <a href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Attention/" style="font-size: 13.75px;">注意力机制 Attention</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-Object-Detection/" style="font-size: 13.5px;">目标检测 Object Detection</a> <a href="/tags/%E8%87%AA%E4%B8%BB%E8%BF%90%E5%8A%A8-ego-motion/" style="font-size: 13px;">自主运动 ego-motion</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6-Automatic-Driving/" style="font-size: 13px;">自动驾驶 Automatic Driving</a> <a href="/tags/%E8%A1%8C%E4%BA%BA%E5%88%86%E5%89%B2-Person-Segmentation/" style="font-size: 13.25px;">行人分割 Person Segmentation</a> <a href="/tags/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB-Person-re-identification/" style="font-size: 13.5px;">行人重识别 Person re-identification</a> <a href="/tags/%E8%A3%82%E7%BC%9D%E6%A3%80%E6%B5%8B-Crack-Detection/" style="font-size: 13px;">裂缝检测 Crack Detection</a> <a href="/tags/%E8%AE%BA%E6%96%87-Article/" style="font-size: 14px;">论文 Article</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">五月 2024</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/AcademicActivities/">AcademicActivities</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/14/paper-2023-MDPI-Symmetry/" class="title">Fan L，Chen W，Jiang X Cross-Correlation Fusion Graph Convolution-Based Object Tracking，*Symmetry* 2023</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-14T05:36:20.000Z" itemprop="datePublished">2024-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/AcademicActivities/">AcademicActivities</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/14/paper-2023-IEEE-TSMC/" class="title">Xiaoyan Jiang, J N Hwang and Z Fang, &#34;A Multiscale Coarse-to-Fine Human Pose Estimation Network With Hard Keypoint Mining&#34; in IEEE Transactions on Systems, Man, and Cybernetics:Systems, March 2024</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-14T02:25:39.000Z" itemprop="datePublished">2024-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/AcademicActivities/">AcademicActivities</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/11/paper-2023-ictee/" class="title">Kunlun Xue, Xiaoyan Jiang, Zhichao Chen“A SLAM Method Based on ORB-SLAM3 Which Mixed GNSS Data” International Conference on Information Technologies and Electrical Engineering</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-11T07:52:27.000Z" itemprop="datePublished">2024-05-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/AcademicActivities/">AcademicActivities</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/07/paper-2023-IEEE/" class="title">Wenwen Zheng,Xiaoyan Jiang, Zhijun Fang etc, &#34;TV-Net:A Structure-Level Feature Fusion Network Based on Tensor Voting for Road Crack Segmentation&#34; in IEEE Transactions on Intelligent Transportation Systems, June 2024</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-07T07:51:43.000Z" itemprop="datePublished">2024-05-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/AcademicActivities/">AcademicActivities</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/06/paper-2023-PR/" class="title">Baihong Han, Xiaoyan Jiang, Zhijun Fang, Hamido Fujita, Yongbin Gao,F-SCP:An automatic prompt generation method for specific classes based on visual language pre-training models,*Pattern Recognition*,2024</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-06T09:43:16.000Z" itemprop="datePublished">2024-05-06</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-paper-2020-MP" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lingyu Ji, Xiaoyan Jiang, Yongbin Gao, Zhijun Fang,“ADR‐Net:Context extraction network based on M‐Net for medical image segmentation” Medical Physics
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/12/31/paper-2020-MP/" class="article-date">
+	  <time datetime="2020-12-31T07:45:40.000Z" itemprop="datePublished">2020-12-31</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/AcademicActivities/">AcademicActivities</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E5%8C%BB%E5%AD%A6%E5%9B%BE%E5%83%8F-Medical-Image/" rel="tag">医学图像 Medical Image</a>, <a class="article-tag-link-link" href="/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6-Attention/" rel="tag">注意力机制 Attention</a>, <a class="article-tag-link-link" href="/tags/%E8%AE%BA%E6%96%87-Article/" rel="tag">论文 Article</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/31/paper-2020-MP/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>团队负责人姜晓燕老师的论文“ADR‐Net: Context extraction network based on M‐Net for medical image segmentation” 被SCI期刊 <a target="_blank" rel="noopener" href="https://aapm.onlinelibrary.wiley.com/journal/24734209">《Medical Physics》</a> 接收，祝贺！</p>
+<p>Abstract:<br>Purpose<br>Medical image segmentation is an essential component of medical image analysis. Accurate segmentation can assist doctors in diagnosis and relieve their fatigue. Although several image segmentation methods based on U-Net have been proposed, their performances have been observed to be suboptimal in the case of small-sized objects. To address this shortcoming, a novel network architecture is proposed in this study to enhance segmentation performance on small medical targets.</p>
+<p>Methods<br>In this paper, we propose a joint multi-scale context attention network architecture to simultaneously capture higher level semantic information and spatial information. In order to obtain a greater number of feature maps during decoding, the network concatenates the images of side inputs by down-sampling during the encoding phase. In the bottleneck layer of the network, dense atrous convolution (DAC) and multi-scale residual pyramid pooling (RMP) modules are exploited to better capture high-level semantic information and spatial information. To improve the segmentation performance on small targets, the attention gate (AG) block is used to effectively suppress feature activation in uncorrelated regions and highlight the target area.</p>
+<p>Results<br>The proposed model is first evaluated on the public dataset DRIVE, on which it performs significantly better than the basic framework in terms of sensitivity (SE), intersection-over-union (IOU), and area under the receiver operating characteristic curve (AUC). In particular, the SE and IOU are observed to increase by 7.46% and 5.97%, respectively. Further, the evaluation indices exhibit improvements compared to those of state-of-the-art methods as well, with SE and IOU increasing by 3.58% and 3.26%, respectively. Additionally, in order to demonstrate the generalizability of the proposed architecture, we evaluate our model on three other challenging datasets. The respective performances are observed to be better than those of state-of-the-art network architectures on the same datasets. Moreover, we use lung segmentation as a comparative experiment to demonstrate the transferability of the advantageous properties of the proposed approach in the context of small target segmentation to the segmentation of large targets. Finally, an ablation study is conducted to investigate the individual contributions of the AG block, the DAC block, and the RMP block to the performance of the network.</p>
+<p>Conclusions<br>The proposed method is evaluated on various datasets. Experimental results demonstrate that the proposed model performs better than state-of-the-art methods in medical image segmentation of small targets.</p>
+<p><strong>Download:</strong> <a target="_blank" rel="noopener" href="https://aapm.onlinelibrary.wiley.com/doi/epdf/10.1002/mp.14364">[官方链接]</a> </p>
+<p><strong>Keywords:</strong><br>Medical image segmentation, Deep Learning, Attention gate Mechanism, Dilation convolution, Residual, Spatial pyramid pooling.</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://sues-vision.github.io/2020/12/31/paper-2020-MP/" title="Lingyu Ji, Xiaoyan Jiang, Yongbin Gao, Zhijun Fang,“ADR‐Net:Context extraction network based on M‐Net for medical image segmentation” Medical Physics" target="_blank" rel="external">http://sues-vision.github.io/2020/12/31/paper-2020-MP/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/sues-vision" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/img/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/sues-vision" target="_blank"><span class="text-dark">多维度计算机视觉团队</span><small class="ml-1x">Multi-Dimensional Computer Vision Team</small></a></h3>
+        <div>计算机视觉，人工智能</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/02/01/paper-2021-KBS/" title="Kaiying Zhu, Xiaoyan Jiang, Zhijun Fang, Yongbin Gao etc, Jenq-Neng Hwang,Photometric transfer for direct visual odometry,Knowledge-Based Systems,2021"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/03/01/paper-2020-KBS/" title="Yang Li, Xiaoyan Jiang, Jenq-Neng Hwang,Effective person re-identification by self-attention model guided feature learning,Knowledge-Based Systems"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = '';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: '',
+    avatar: '',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
